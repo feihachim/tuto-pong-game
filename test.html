@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        background-color: lightgray;
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .canvas-pong {
+        width: 500px;
+        height: 400px;
+        background-color: black;
+        position: relative;
+      }
+
+      .canvas-pong div {
+        position: absolute;
+      }
+
+      .player {
+        width: 20px;
+        height: 100px;
+        background-color: white;
+      }
+
+      .net {
+        width: 10px;
+        height: 400px;
+        top: 0;
+        left: 245px;
+        background-color: white;
+      }
+
+      .ball {
+        width: 10px;
+        height: 10px;
+        background-color: turquoise;
+        border-radius: 50%;
+        top: 195px;
+        left: 245px;
+      }
+
+      .player1 {
+        top: 150px;
+        left: 10px;
+      }
+
+      .player2 {
+        top: 150px;
+        right: 10px;
+      }
+      h2 {
+        font-family: "VT323", monospace;
+        color: white;
+        font-size: 3rem;
+      }
+    </style>
+    <title>Jeu pong mockup</title>
+  </head>
+  <body>
+    <h2>00 - 00</h2>
+    <div class="canvas-pong">
+      <div class="player player1"></div>
+      <div class="player player2"></div>
+      <div class="net"></div>
+      <div class="ball"></div>
+    </div>
+    <script>
+      "use strict";
+      const player1 = document.querySelector(".player1");
+      const player2 = document.querySelector(".player2");
+      const ball = document.querySelector(".ball");
+      let player1PositionY = 150;
+      let player2PositionY = 150;
+
+      window.addEventListener("keydown", (event) => {
+        switch (event.code) {
+          case "ArrowUp":
+            if (player2PositionY > 10) {
+              player2PositionY -= 10;
+              player2.style.transform = "translateY(-10px)";
+            }
+            player2.style.top = player2PositionY + "px";
+            break;
+          case "ArrowDown":
+            if (player2PositionY < 290) {
+              player2PositionY += 10;
+              player2.style.transform = "translateY(10px)";
+            }
+            player2.style.top = player2PositionY + "px";
+            break;
+          case "KeyA":
+            if (player1PositionY > 10) {
+              player1PositionY -= 10;
+              player1.style.transform = "translateY(-10px)";
+            }
+            player1.style.top = player1PositionY + "px";
+            break;
+          case "KeyZ":
+            if (player1PositionY < 290) {
+              player1PositionY += 10;
+              player1.style.transform = "translateY(10px)";
+            }
+            player1.style.top = player1PositionY + "px";
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>
