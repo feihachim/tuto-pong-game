@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.canvas-pong {
+  width: 500px;
+  height: 400px;
+  background-color: black;
+  position: relative;
+}
+
+.canvas-pong div {
+  position: absolute;
+}
+
+.player {
+  width: 20px;
+  height: 100px;
+  background-color: white;
+}
+
+.net {
+  width: 10px;
+  height: 400px;
+  top: 0;
+  left: 245px;
+  background-color: white;
+}
+
+.ball {
+  width: 10px;
+  height: 10px;
+  background-color: turquoise;
+  border-radius: 50%;
+  top: 195px;
+  left: 245px;
+}
+
+.player1 {
+  top: 150px;
+  left: 10px;
+}
+
+.player2 {
+  top: 150px;
+  right: 10px;
+}
+h2 {
+  font-family: "VT323", monospace;
+  color: white;
+  font-size: 3rem;
+}
