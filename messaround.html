@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+    <title>Mess around play test</title>
+  </head>
+  <body>
+    <h2 class="timer-display"></h2>
+    <button class="decrement">Decrement</button>
+    <button class="play-pause">Play/Pause</button>
+    <button class="increment">Increment</button>
+    <button class="reset">Reset</button>
+    <script>
+      "use strict";
+      class Timer {
+        constructor() {
+          this.minutes = 25;
+          this.seconds = 0;
+        }
+
+        increment() {
+          if (this.minutes < 60) {
+            this.minutes += 1;
+          }
+        }
+
+        decrement() {
+          if (this.minutes > 1) {
+            this.minutes -= 1;
+          }
+        }
+
+        reset() {
+          this.minutes = 25;
+          this.seconds = 0;
+        }
+        prependZero(number) {
+          if (number < 10) {
+            return "0" + number;
+          } else {
+            return number.toString();
+          }
+        }
+
+        toString() {
+          return (
+            this.prependZero(this.minutes) +
+            ":" +
+            this.prependZero(this.seconds)
+          );
+        }
+
+        decrementTimer() {
+          if (this.minutes !== 0 && this.seconds !== 0) {
+            if (this.seconds === 0) {
+              this.minutes -= 1;
+            }
+            this.seconds = (this.seconds - 1) % 60;
+          }
+        }
+      }
+
+      /*function prependZero(number) {
+        if (number < 10) {
+          return "0" + number;
+        } else {
+          return number.toString();
+        }
+      }
+
+      Timer.prototype.toString = function () {
+        return prependZero(this.minutes) + ":" + prependZero(this.seconds);
+      };*/
+
+      /*Timer.prototype.decrementTimer = function () {
+        if (this.minutes !== 0 && this.seconds !== 0) {
+          if (this.seconds === 0) {
+            this.minutes -= 1;
+          }
+          this.seconds = (this.seconds - 1) % 60;
+        }
+      };*/
+
+      const timerDisplay = document.querySelector(".timer-display");
+      const incrementButton = document.querySelector(".increment");
+      const decrementButton = document.querySelector(".decrement");
+      const resetButton = document.querySelector(".reset");
+      const playPauseButton = document.querySelector(".play-pause");
+      let playing = false;
+      let idTimer;
+      let timer = new Timer();
+
+      window.addEventListener("load", (event) => {
+        timerDisplay.textContent = timer.toString();
+      });
+
+      incrementButton.addEventListener("click", (event) => {
+        timer.increment();
+        timerDisplay.textContent = timer.toString();
+      });
+
+      decrementButton.addEventListener("click", (event) => {
+        timer.decrement();
+        timerDisplay.textContent = timer.toString();
+      });
+
+      resetButton.addEventListener("click", (event) => {
+        timer.reset();
+        timerDisplay.textContent = timer.toString();
+      });
+
+      playPauseButton.addEventListener("click", (event) => {
+        console.log("boo");
+        timer.decrementTimer();
+        timerDisplay.textContent = timer.toString();
+      });
+    </script>
+  </body>
+</html>
