@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer test</title>
+</head>
+
+<body>
+    <h2></h2>
+    <button id="play-pause">Play/Pause</button>
+    <script>
+        "use strict";
+        const h2 = document.querySelector('h2');
+        const buttonTimer = document.querySelector('#play-pause');
+        let idTimer;
+        let playStatus = false;
+        let timer = 300;
+        function prependZero(number) {
+            let result;
+            if (number < 10) {
+                result = "0" + number;
+            } else {
+                result = number.toString();
+            }
+            return result;
+        }
+        function decrementTime(timer) {
+            if (timer > 0) {
+                timer -= 1;
+            }
+            return displayTime(timer);
+        }
+
+        function toggle(value) {
+            return !value;
+        }
+
+        function playTimer(e) {
+            playStatus = toggle(playStatus);
+            if (timer > 0 && playStatus) {
+
+                idTimer = setInterval(() => {
+                    timer--;
+                    h2.textContent = displayTime(timer);
+                }, 1000);
+            }
+            else {
+                clearInterval(idTimer);
+            }
+
+        }
+
+        function displayTime(timer) {
+            let seconds = timer % 60;
+            let minutes = (timer - seconds) / 60;
+            return `${prependZero(minutes)}:${prependZero(seconds)}`;
+        }
+        window.addEventListener('load', event => {
+            h2.textContent = displayTime(timer);
+        })
+        buttonTimer.addEventListener('click', playTimer);
+    </script>
+</body>
+
+</html>
