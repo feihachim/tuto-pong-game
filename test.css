@@ -18,7 +18,7 @@ body {
 }
 
 .canvas-pong {
-  width: 500px;
+  width: 600px;
   height: 400px;
   background-color: black;
   position: relative;
@@ -29,7 +29,7 @@ body {
 }
 
 .player {
-  width: 20px;
+  width: 10px;
   height: 100px;
   background-color: white;
 }
@@ -38,7 +38,7 @@ body {
   width: 10px;
   height: 400px;
   top: 0;
-  left: 245px;
+  left: 295px;
   background-color: white;
 }
 
@@ -48,7 +48,7 @@ body {
   background-color: turquoise;
   border-radius: 50%;
   top: 195px;
-  left: 245px;
+  left: 295px;
 }
 
 .player1 {
@@ -56,10 +56,11 @@ body {
   left: 10px;
 }
 
-.player2 {
+.ai {
   top: 150px;
   right: 10px;
 }
+
 h2 {
   font-family: "VT323", monospace;
   color: white;

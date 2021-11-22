@@ -1,60 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test canvas</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <script>
-        const canvas = document.createElement('canvas');
-        canvas.setAttribute('id', 'canvas');
-        canvas.width = 500;
-        canvas.height = 400;
-        const context = canvas.getContext('2d');
-        document.body.appendChild(canvas);
+      const canvas = document.createElement("canvas");
+      canvas.setAttribute("id", "canvas");
+      canvas.width = 600;
+      canvas.height = 400;
+      const context = canvas.getContext("2d");
+      document.body.appendChild(canvas);
 
-        //Vider le canvas
-        context.clearRect(0, 0, canvas.width, canvas.height);
+      //Vider le canvas
+      context.clearRect(0, 0, canvas.width, canvas.height);
 
-        //Canvas noir
-        context.beginPath();
-        context.fillStyle = "black";
-        context.fillRect(0, 0, canvas.width, canvas.height);
-        context.fill();
-        context.closePath();
+      //Canvas noir
+      context.beginPath();
+      context.fillStyle = "black";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.fill();
+      context.closePath();
 
-        //Pagaie gauche
-        context.beginPath();
-        context.fillStyle = "white";
-        context.fillRect(10, canvas.height / 2 - 50, 10, 100);
-        context.fill();
-        context.closePath();
+      //Pagaie gauche
+      context.beginPath();
+      context.fillStyle = "white";
+      context.fillRect(10, canvas.height / 2 - 50, 10, 100);
+      context.fill();
+      context.closePath();
 
-        //Pagaie droite
-        context.beginPath();
-        context.fillStyle = "white";
-        context.fillRect(canvas.width - 20, canvas.height / 2 - 50, 10, 100);
-        context.fill();
-        context.closePath();
+      //Pagaie droite
+      context.beginPath();
+      context.fillStyle = "white";
+      context.fillRect(canvas.width - 20, canvas.height / 2 - 50, 10, 100);
+      context.fill();
+      context.closePath();
 
-        //fillRectcontext.beginPath();
-        context.fillStyle = "white";
-        context.fillRect(canvas.width / 2 - 5, 0, 10, canvas.height);
-        context.fill();
-        context.closePath();
+      //Score gauche
+      context.beginPath();
+      context.fillStyle = "white";
+      context.font = "35px sans-serif";
+      context.fillText(0, canvas.width / 4, canvas.height / 6);
+      context.fill();
+      context.closePath();
 
-        //Balle
-        context.beginPath();
-        context.fillStyle = "turquoise";
-        context.arc(canvas.width / 2, canvas.height / 2, 10, 0, Math.PI * 2, false);
-        context.fill();
-        context.closePath();
+      //Score droite
+      context.beginPath();
+      context.fillStyle = "white";
+      context.font = "35ps sans-serif";
+      context.fillText(0, (3 * canvas.width) / 4, canvas.height / 6);
+      context.fill();
+      context.closePath();
+
+      //Net
+      context.beginPath();
+      context.fillStyle = "white";
+      context.fillRect(canvas.width / 2 - 5, 0, 10, canvas.height);
+      context.fill();
+      context.closePath();
+
+      //Balle
+      context.beginPath();
+      context.fillStyle = "turquoise";
+      context.arc(
+        canvas.width / 2,
+        canvas.height / 2,
+        10,
+        0,
+        Math.PI * 2,
+        false
+      );
+      context.fill();
+      context.closePath();
     </script>
-</body>
-
+  </body>
 </html>
