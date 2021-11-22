@@ -5,8 +5,15 @@ const player = document.querySelector(".player1");
 const h2 = document.querySelector("h2");
 const ai = document.querySelector(".ai");
 const ball = document.querySelector(".ball");
+let canvasWidth = 600;
+let canvasHeight = 400;
+let paddleWidth = 10;
+let paddleHeight = 100;
+let ballRadius = 10;
 let playerPositionY = 150;
+let playerPositionX = 10;
 let aiPositionY = 150;
+let aiPositionX = 10;
 let ballPositionX = 10;
 let ballPositionY = 10;
 let velocityX = 2;
@@ -52,12 +59,9 @@ function play() {
     velocityY = -velocityY;
   }
   if (ballPositionX <= -275) {
-    console.log(
-      "Position de la pagaie : " +
-        playerPositionY +
-        ", balle : " +
-        ballPositionY
-    );
+    if (playerPositionY >= ballPositionY + 100 && playerPositionY <= ballPositionY + 200) {
+      velocityX = -velocityX;
+    }
   }
   if (ballPositionX <= -295) {
     ballPositionX = 0;
